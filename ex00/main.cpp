@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 15:08:09 by julcalde          #+#    #+#             */
-/*   Updated: 2025/08/11 15:51:34 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/08/11 16:00:26 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,26 @@
 
 int main(void)
 {
+	// Create instances of Fixed class to test constructors and assignment operator
 	Fixed a;
 	Fixed b(a);
 	Fixed c;
-
 	c = b;
-	std::cout << a.getRawBits() << std::endl;
-	std::cout << b.getRawBits() << std::endl;
-	std::cout << c.getRawBits() << std::endl;
 	
+	// Output the raw bits of each Fixed instance
+	std::cout << "\n" << a.getRawBits() << std::endl;
+	std::cout << b.getRawBits() << std::endl;
+	std::cout << c.getRawBits()<< "\n" << std::endl;
+	
+	// Set new raw bits for each Fixed instance
 	a.setRawBits(42);
 	b.setRawBits(84);
 	c.setRawBits(168);
 
-	std::cout << a.getRawBits() << std::endl;
+	// Output the raw bits after setting new values
+	std::cout << "\n" << a.getRawBits() << std::endl;
 	std::cout << b.getRawBits() << std::endl;
-	std::cout << c.getRawBits() << std::endl;
+	std::cout << c.getRawBits() << "\n" << std::endl;
 	
 	return (0);
 }
