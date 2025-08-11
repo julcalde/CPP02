@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 17:08:43 by julcalde          #+#    #+#             */
-/*   Updated: 2025/08/11 17:32:15 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/08/11 19:01:46 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,129 @@ std::ostream& operator<<(std::ostream& os, const Fixed& fixed)
 {
 	os << fixed.toFloat();
 	return (os);
+}
+
+/************************/
+/* COMPARISON OPERATORS */
+/************************/
+
+bool Fixed::operator>(const Fixed& other) const
+{
+	return (_value > other._value);
+}
+
+bool Fixed::operator<(const Fixed& other) const
+{
+	return (_value < other._value);
+}
+
+bool Fixed::operator>=(const Fixed& other) const
+{
+	return (_value >= other._value);
+}
+
+bool Fixed::operator<=(const Fixed& other) const
+{
+	return (_value <= other._value);
+}
+
+bool Fixed::operator==(const Fixed& other) const
+{
+	return (_value == other._value);
+}
+
+bool Fixed::operator!=(const Fixed& other) const
+{
+	return (_value != other._value);
+}
+
+/************************/
+/* ARITHMETIC OPERATORS */
+/************************/
+
+Fixed Fixed::operator+(const Fixed& other) const
+{
+	Fixed result;
+	result._value = _value + other._value;
+	return (result);
+}
+
+Fixed Fixed::operator-(const Fixed& other) const
+{
+	Fixed result;
+	result._value = _value - other._value;
+	return (result);
+}
+
+Fixed Fixed::operator*(const Fixed& other) const
+{
+	Fixed result;
+	result._value = static_cast<int>((static_cast<long>(_value) * other._value) >> _fracBits);
+	return (result);
+}
+
+Fixed Fixed::operator/(const Fixed& other) const
+{
+	Fixed result;
+	if (other._value == 0)
+	{
+		// Prohibiting division by zero to avoid undefined behavior or crashing
+        throw std::runtime_error("Division by zero not allowed");
+    }
+    result._value = static_cast<int>((static_cast<long>(_value) << _fracBits) / other._value);
+	return (result);
+}
+
+/***********************************/
+/* INCREMENT & DECREMENT OPERATORS */
+/***********************************/
+
+Fixed& Fixed::operator++()
+{
+	_value += 1;
+	return (*this);
+}
+
+Fixed Fixed::operator++(int)
+{
+	Fixed tmp = *this;
+	_value += 1;
+	return (tmp);
+}
+
+Fixed& Fixed::operator--()
+{
+	_value -= 1;
+	return (*this);
+}
+
+Fixed Fixed::operator--(int)
+{
+	Fixed tmp = *this;
+	_value -= 1;
+	return (tmp);
+}
+
+/*********************/
+/* MIN/MAX FUNCTIONS */
+/*********************/
+
+Fixed& Fixed::min(Fixed& a, Fixed& b)
+{
+	return (a._value < b._value ? a : b);
+}
+
+const Fixed& Fixed::min(const Fixed& a, const Fixed& b)
+{
+	return (a._value < b._value ? a : b);
+}
+
+Fixed& Fixed::max(Fixed& a, Fixed& b)
+{
+    return (a._value > b._value) ? a : b;
+}
+
+const Fixed& Fixed::max(const Fixed& a, const Fixed& b)
+{
+    return (a._value > b._value) ? a : b;
 }

@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 17:08:41 by julcalde          #+#    #+#             */
-/*   Updated: 2025/08/11 18:29:27 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/08/11 18:56:05 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ class Fixed
 		Fixed operator/(const Fixed& other) const;	// Division operator
 
 		Fixed& operator++();			// Pre-increment operator
-		Fixed& operator++(int);			// Post-increment operator
+		Fixed operator++(int);			// Post-increment operator
 		Fixed& operator--();			// Pre-decrement operator
-		Fixed& operator--(int);			// Post-decrement operator
+		Fixed operator--(int);			// Post-decrement operator
 
 		static Fixed& min(Fixed& a, Fixed&b);						// Returns the minimum of two Fixed objects
 		static const Fixed& min(const Fixed& a, const Fixed&b);		// Returns the minimum of two Fixed objects
