@@ -6,7 +6,7 @@
 /*   By: julcalde <julcalde@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 17:08:41 by julcalde          #+#    #+#             */
-/*   Updated: 2025/08/11 18:00:17 by julcalde         ###   ########.fr       */
+/*   Updated: 2025/08/11 18:29:27 by julcalde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ class Fixed
 		Fixed& operator=(const Fixed& other);	// Copy assignment operator
 		~Fixed();								//Destructor
 
-		bool operator>(Fixed& other) const;		// Greater than operator
-		bool operator<(Fixed& other) const;		// Less than operator
-		bool operator>=(Fixed& other) const;	// Greater than or equal to operator
-		bool operator<=(Fixed& other) const;	// Less than or equal to operator
-		bool operator==(Fixed& other) const;	// Equality operator
-		bool operator!=(Fixed& other) const;	// Not equal operator
+		bool operator>(const Fixed& other) const;		// Greater than operator
+		bool operator<(const Fixed& other) const;		// Less than operator
+		bool operator>=(const Fixed& other) const;	// Greater than or equal to operator
+		bool operator<=(const Fixed& other) const;	// Less than or equal to operator
+		bool operator==(const Fixed& other) const;	// Equality operator
+		bool operator!=(const Fixed& other) const;	// Not equal operator
 
 		Fixed operator+(const Fixed& other) const;	// Addition operator
 		Fixed operator-(const Fixed& other) const;	// Subtraction operator
